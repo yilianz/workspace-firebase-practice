@@ -34,57 +34,43 @@ $(".sampleSurvey input[type='submit']").click(function(e) {
 });
 
 // update the result in table
-n1 = 0;
-n2 = 0;
-n3 = 0;
-n4 = 0;
-n5 = 0;
 
 firebase
   .firestore()
   .collection("surveydata")
-  .get()
-  .then(querySnapshot => {
-    querySnapshot.forEach(doc => {
-      // doc.data() is never undefined for query doc snapshots
-      // console.log(doc.id, " => ", doc.data());
+  .onSnapshot(function(querySnapshot) {
+    var n1 = 0;
+    var n2 = 0;
+    var n3 = 0;
+    var n4 = 0;
+    var n5 = 0;
+    querySnapshot.forEach(function(doc) {
+      console.log("snapshot added ", doc.data().choice);
       var s = doc.data().choice;
       console.log(s);
       switch (s) {
         case "A":
           n1++;
+          $("#ans1").text(n1);
           break;
         case "B":
           n2++;
+          $("#ans2").text(n2);
           break;
         case "C":
           n3++;
+          $("#ans3").text(n3);
           break;
         case "D":
           n4++;
+          $("#ans4").text(n4);
           break;
         case "E":
           n5++;
+          $("#ans5").text(n5);
           break;
         default:
           break;
       }
-      $("#ans1").text(n1);
-      $("#ans2").text(n2);
-      $("#ans3").text(n3);
-      $("#ans4").text(n4);
-      $("#ans5").text(n5);
     });
-  })
-  .then(function() {
-    // change this backend!
-    //console.log("Done Database-- still searching");
-    startload().then(function() {
-      start = new Date().getTime();
-      //init(1);
-      // initloop();
-    });
-  })
-  .catch(function(error) {
-    console.log("Error getting documents: ", error);
   });

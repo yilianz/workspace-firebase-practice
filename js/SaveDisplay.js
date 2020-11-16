@@ -5,5 +5,14 @@ var firebaseConfig = {};
 firebase.initializeApp(firebaseConfig);
 
 // save the data
+$(".sampleSurvey input[type='submit']").click(function(e) {
+  e.preventDefault();
+
+  // get the value of the form using serializeArray method
+  
+
+
+
+});
 
 // update the result in table

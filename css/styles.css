@@ -103,6 +103,9 @@ table th {
 }
 
 input[type="text"],
+input[type="date"],
+input[type="number"],
+select,
 input[type="password"] {
   margin: 0 auto;
   display: inline-block;
@@ -119,6 +122,7 @@ input[type="password"] {
 }
 
 input[type="submit"],
+input[type="button"],
 input[type="reset"] {
   margin: 20px auto;
   display: inline-block;

@@ -10,11 +10,12 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-/* examples */
+/* object examples 
 var testJson = {};
 testJson["lastname"] = "zhang";
 testJson["location"] = "aiken";
 console.log(testJson);
+*/
 
 // enter data in
 $("input[type='button']").click(function(e) {
@@ -30,13 +31,6 @@ $("input[type='button']").click(function(e) {
   }
 
   console.log(inputJson);
-
-  //var night = parseInt(inputJson["num"]);
-  //console.log(inputJson["room"].slice(8));
-  //var cost = parseInt(inputJson["room"].slice(-3));
-  // console.log(cost);
-  // console.log("The cost for this reservation is " + night * cost);
-
   /* save the data to database */
   firebase
     .firestore()
@@ -46,3 +40,22 @@ $("input[type='button']").click(function(e) {
   /* clear the entry */
   $("form")[0].reset();
 });
+
+/* array example
+const array1 = ['a', 'b', 'c'];
+array1.forEach(element => console.log(element));
+*/
+
+/* read the data from the database */
+
+firebase
+  .firestore()
+  .collection("hoteldata")
+  .onSnapshot(function(querySnapshot) {
+    console.log(querySnapshot.size);
+    querySnapshot.forEach(doc => {
+      console.log(doc.data());
+      console.log(doc.data().room);
+      console.log(doc.data().checkout);
+    });
+  });

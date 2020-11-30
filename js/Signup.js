@@ -16,7 +16,7 @@ $("#signup-form").submit(function(e) {
   e.preventDefault();
   //get the username(email) and password from the form
   // change the following code
-  var email = "yilianz3@gmail.com";
+  var email = "yilianz4@gmail.com";
   var password = "ddsgagafda";
 
   // create a user with email address and password
@@ -28,6 +28,7 @@ $("#signup-form").submit(function(e) {
       // ...
 
       console.log("You are signed up");
+      window.location.href = "Login.html";
     })
     .catch(error => {
       var errorCode = error.code;
